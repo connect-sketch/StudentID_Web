@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "Asraf/Asraf/Figma/index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/server.js"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "backend/admin/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "Asraf/Asraf/Figma/$1"
+    }
+  ]
+}
