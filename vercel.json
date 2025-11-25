@@ -8,12 +8,20 @@
     {
       "src": "Asraf/Asraf/Figma/**",
       "use": "@vercel/static"
+    },
+    {
+      "src": "backend/admin/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "backend/server.js"
+    },
+    {
+      "src": "/admin",
+      "dest": "/backend/admin/index.html"
     },
     {
       "src": "/(.*)",
