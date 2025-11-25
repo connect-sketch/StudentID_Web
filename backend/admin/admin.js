@@ -11,9 +11,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const ADMIN_PASSWORD_KEY = 'admin_session_password';
     const API_BASE_URL = 'https://student-id-web.vercel.app'; // Base URL for the backend API
 
-    // On page load, ensure the login view is shown by default
-    loginContainer.style.display = 'flex';
-    dashboardContainer.style.display = 'none';
+    // --- Check Login on Page Load ---
+    function checkLogin() {
+        const storedPassword = localStorage.getItem(ADMIN_PASSWORD_KEY);
+        if (storedPassword) {
+            // If password exists, show dashboard and fetch data
+            loginContainer.style.display = 'none';
+            dashboardContainer.style.display = 'flex';
+            fetchData('callback-requests');
+        } else {
+            // Otherwise, show the login form
+            loginContainer.style.display = 'flex';
+            dashboardContainer.style.display = 'none';
+        }
+    }
+
+    // Initial check when the page loads
+    checkLogin();
+
 
     // Handle Login
     loginForm.addEventListener('submit', async (e) => {
