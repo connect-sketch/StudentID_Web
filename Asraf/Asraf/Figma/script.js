@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = { name, email, phone, message };
 
             try {
-                const response = await fetch('http://localhost:3000/api/callback-requests', {
+                const response = await fetch('/api/callback-requests', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = { name, email, highestQualification, overallMarksGPA, standardizedTestScores };
 
             try {
-                const response = await fetch('http://localhost:3000/api/eligibility-checks', {
+                const response = await fetch('/api/eligibility-checks', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Interaction Logging ---
     async function sendInteractionLog(eventType, source, details = {}) {
         try {
-            const response = await fetch('http://localhost:3000/api/interactions', {
+            const response = await fetch('/api/interactions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = { name, email, phone, country };
 
             try {
-                const response = await fetch('http://localhost:3000/api/expert-requests', {
+                const response = await fetch('/api/expert-requests', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = { name, email, phone, sessionDate, sessionSlot };
 
             try {
-                const response = await fetch('http://localhost:3000/api/counselling-sessions', {
+                const response = await fetch('/api/counselling-sessions', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = { name, email, phone, testType };
 
             try {
-                const response = await fetch('http://localhost:3000/api/demo-requests', {
+                const response = await fetch('/api/demo-requests', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
