@@ -249,6 +249,7 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // --- (ONE-TIME) Endpoint to Register the first Admin User ---
+/*
 app.post('/api/admin/register', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -271,6 +272,7 @@ app.post('/api/admin/register', async (req, res) => {
         res.status(500).send('Error creating admin user.');
     }
 });
+*/
 
 
 // --- Admin Login Endpoint ---
