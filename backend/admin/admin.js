@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dataSections = document.querySelectorAll('.data-section');
 
     const ADMIN_PASSWORD_KEY = 'admin_session_password';
-    const API_BASE_URL = ''; // Base URL for the backend API
+    const API_BASE_URL = 'https://student-id-web.vercel.app'; // Base URL for the backend API
 
     // On page load, ensure the login view is shown by default
     loginContainer.style.display = 'flex';
