@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Ananya Sharma",
+        "location": "London, UK",
+        "image": "images/ananya sharma.jpg",
+        "testimonial": "StudentiD Made My Application To The University Of Hertfordshire Effortless And Stress-Free. Their Team Provided Me With Hands-On Support And Helped Me Secure A Great Scholarship. Studying In The UK Is A Dream Come True, Thanks To StudentiD!"
+    },
+    {
+        "name": "Megha Patel",
+        "location": "New York, USA",
+        "image": "images/megha patel.jpg",
+        "testimonial": "The guidance I received from StudentiD was invaluable. They helped me choose the right university and course, and their support throughout the application process was exceptional."
+    },
+    {
+        "name": "Riya Menon",
+        "location": "Toronto, Canada",
+        "image": "images/riya menon.jpg",
+        "testimonial": "I am so grateful to the team at StudentiD for their expert advice and assistance. They made my dream of studying abroad a reality."
+    },
+    {
+        "name": "Aditya Joshi",
+        "location": "Melbourne, Australia",
+        "image": "images/adithya joshi.jpg",
+        "testimonial": "StudentiD is the best consultancy for anyone looking to study abroad. They are professional, reliable, and truly care about their students' success."
+    }
+]

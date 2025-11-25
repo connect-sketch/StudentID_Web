@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rubik+Vinyl&display=swap');
+
+.benefits-card-section {
+    font-family: 'Poppins', sans-serif;
+    /* background-color: #f0f2f5; Removed grey background */
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* To make cards in a row have the same height */
+    flex-wrap: wrap;
+    gap: 20px; /* Add some space between the cards */
+    padding: 20px; /* Add some padding to the section */
+}
+
+.benefits-card {
+    grid-area: 1 / 1;
+    background: linear-gradient(to right, #e53935, #c62828);
+    color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 1100px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    display: flex; /* Use flexbox for the card's internal layout */
+    flex-direction: column; /* Stack card content vertically */
+    justify-content: flex-start; /* Align content to the start */
+    min-height: 400px; /* Decreased height */
+    flex-grow: 1; /* Allow card to grow to fill available space */
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card-container {
+    display: flex;
+    flex-grow: 1; /* Allow container to grow to fill available space */
+    flex-direction: row; /* Align content horizontally */
+}
+
+.left-column {
+    width: 300px; /* Fixed width */
+    height: 400px; /* Decreased height to match card min-height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out content vertically */
+    align-items: center; /* Center horizontally */
+    overflow: hidden; /* Hide overflowing content */
+    position: relative; /* For positioning child elements */
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding-top: 20px; /* Add padding to push content down */
+    padding-bottom: 20px; /* Add padding to push content up from bottom */
+}
+
+
+.country-name {
+    font-family: 'Rubik Vinyl', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+    /* Removed padding-top here as it's now on the parent */
+    z-index: 1; /* Ensure text is above background image */
+}
+
+.left-column[data-country="usa"] {
+    background-image: url('images/country_usa/Rectangle 1702.png');
+    background-size: contain; /* Contain the image within the container */
+    background-position: bottom;
+    background-repeat: no-repeat; /* Ensure image is not repeated */
+}
+
+.left-column[data-country="uk"] {
+    background-image: url('images/country_uk/Rectangle 1702.png');
+    background-size: auto 80%; /* Further decrease height to 80%, maintain aspect ratio */
+    background-position: center 110%; /* Push image down 10% below the bottom */
+    background-repeat: no-repeat;
+}
+
+.left-column[data-country="ire"] {
+    background-image: url('images/country_ire/Rectangle 1702.png');
+    background-size: auto 80%; /* Decrease height to 80%, maintain aspect ratio */
+    background-position: center 110%; /* Push image down 10% below the bottom */
+    background-repeat: no-repeat;
+}
+
+.left-column[data-country="aus"] {
+    background-image: url('images/country_aus/Rectangle 1702.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.left-column[data-country="nz"] {
+    background-image: url('images/country_nz/Rectangle_1702_1.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.left-column[data-country="eur"] {
+    background-image: url('images/country_eu/Rectangle 1710.png');
+    background-size: auto 80%; /* Decrease height to 80%, maintain aspect ratio */
+    background-position: center 110%; /* Push image down 10% below the bottom */
+    background-repeat: no-repeat;
+}
+
+
+.right-column {
+    flex: 2;
+    padding-left: 30px;
+    flex-grow: 1; /* Allow right column to grow to fill available space */
+}
+
+.right-column h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.right-column ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.right-column ul li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.expert-button {
+    background-color: #fff;
+    color: #d9534f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.expert-button:hover {
+    background-color: #A1FD02; /* Green background on hover */
+    color: #000; /* Black text on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dream-country {
+    margin-top: 50px; /* Adjusted position */
+    text-align: center;
+}
+
+.dream-country h3 {
+    margin-bottom: 15px;
+}
+
+.country-buttons .country-btn {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+}
+
+.country-buttons .country-btn:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.country-buttons .country-btn.active {
+
+    background-color: #7ed321;
+
+    color: #fff;
+
+    border-color: #7ed321;
+
+}
+
+
+
+.uk-card {
+
+    background: #0F142A;
+
+}
+
+.ire-card {
+
+    background: #F0742B;
+
+}
+
+.aus-card {
+
+    background: #A72C3A;
+
+}
+
+.nz-card {
+
+    background: #D31E33;
+
+}
+
+.eur-card {
+    background: #0F2A8E;
+}
+
+.benefits-cards-container {
+    display: grid;
+    place-items: center;
+}

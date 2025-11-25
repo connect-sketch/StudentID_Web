@@ -1,0 +1,55 @@
+.benefits-section-image {
+    background-image: url("country_usa/background.png");
+    background-size: cover;
+    width: 900px; /* Placeholder width */
+    height: 600px; /* Placeholder height */
+    position: relative;
+}
+
+.usa-text-image {
+    position: absolute;
+    top: 50px; /* Placeholder position */
+    left: 50px; /* Placeholder position */
+    width: 300px; /* Placeholder width */
+}
+
+.statue-of-liberty-image {
+    position: absolute;
+    top: 0; /* Placeholder position */
+    left: 0; /* Placeholder position */
+    width: 400px; /* Placeholder width */
+}
+
+.benefits-title-image {
+    position: absolute;
+    top: 50px; /* Placeholder position */
+    right: 50px; /* Placeholder position */
+    width: 400px; /* Placeholder width */
+}
+
+.benefits-text-image {
+    position: absolute;
+    top: 150px; /* Placeholder position */
+    right: 50px; /* Placeholder position */
+    width: 400px; /* Placeholder width */
+}
+
+.request-callback-image {
+    position: absolute;
+    bottom: 150px; /* Placeholder position */
+    right: 200px; /* Placeholder position */
+    width: 150px; /* Placeholder width */
+}
+
+.country-buttons-container {
+    position: absolute;
+    bottom: 50px; /* Placeholder position */
+    left: 50%; /* Placeholder position */
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px; /* Placeholder gap */
+}
+
+.country-button-image {
+    width: 80px; /* Placeholder width */
+}

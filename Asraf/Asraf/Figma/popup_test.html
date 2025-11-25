@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="fullscreen-popup" class="fullscreen-popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <div class="popup-body">
+                <div class="popup-image">
+                    <img src="images/country_usa/request callback.png" alt="Request Callback">
+                </div>
+                <div class="popup-form-container">
+                    <h3>Book a Free Counselling Session</h3>
+                    <p>Fill out the form below to get expert guidance on your study abroad journey.</p>
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone Number" required>
+                        <select required>
+                            <option value="">Select your preferred country</option>
+                            <option value="usa">USA</option>
+                            <option value="uk">UK</option>
+                            <option value="ireland">Ireland</option>
+                            <option value="australia">Australia</option>
+                            <option value="newzealand">New Zealand</option>
+                            <option value="europe">Europe</option>
+                        </select>
+                        <button type="submit" class="btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fullscreenPopup = document.querySelector('#fullscreen-popup');
+            const closePopupBtn = document.querySelector('.close-popup');
+
+            function showFullscreenPopup() {
+                // For testing, we'll ignore localStorage and always show it
+                fullscreenPopup.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                console.log('Popup shown!');
+            }
+
+            function hideFullscreenPopup() {
+                fullscreenPopup.classList.remove('active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+                console.log('Popup hidden!');
+            }
+
+            // Show popup immediately for testing
+            setTimeout(showFullscreenPopup, 1000); // 1 second delay for testing
+
+            if (closePopupBtn) {
+                closePopupBtn.addEventListener('click', hideFullscreenPopup);
+            }
+
+            window.addEventListener('click', (e) => {
+                if (e.target === fullscreenPopup) {
+                    hideFullscreenPopup();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

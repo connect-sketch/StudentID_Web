@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentID Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div id="login-container">
+        <h1>Admin Login</h1>
+        <form id="login-form">
+            <input type="password" id="admin-password" placeholder="Admin Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="login-error" class="error-message"></p>
+    </div>
+
+    <div id="dashboard-container" class="hidden">
+        <header>
+            <h1>StudentID Admin Dashboard</h1>
+            <button id="logout-button">Logout</button>
+        </header>
+        <nav>
+            <button class="nav-button active" data-target="callback-requests">Callback Requests</button>
+            <button class="nav-button" data-target="eligibility-checks">Eligibility Checks</button>
+            <button class="nav-button" data-target="expert-requests">Expert Requests</button>
+            <button class="nav-button" data-target="counselling-sessions">Counselling Sessions</button>
+            <button class="nav-button" data-target="demo-requests">Demo Requests</button>
+            <button class="nav-button" data-target="interaction-logs">Interaction Logs</button>
+        </nav>
+        <main>
+            <section id="callback-requests" class="data-section">
+                <h2>Callback Requests</h2>
+                <div class="table-container"></div>
+            </section>
+            <section id="eligibility-checks" class="data-section hidden">
+                <h2>Eligibility Checks</h2>
+                <div class="table-container"></div>
+            </section>
+            <section id="expert-requests" class="data-section hidden">
+                <h2>Expert Requests</h2>
+                <div class="table-container"></div>
+            </section>
+            <section id="counselling-sessions" class="data-section hidden">
+                <h2>Counselling Sessions</h2>
+                <div class="table-container"></div>
+            </section>
+            <section id="demo-requests" class="data-section hidden">
+                <h2>Demo Requests</h2>
+                <div class="table-container"></div>
+            </section>
+            <section id="interaction-logs" class="data-section hidden">
+                <h2>Interaction Logs</h2>
+                <div class="table-container"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
