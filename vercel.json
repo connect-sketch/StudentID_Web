@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "Asraf/Asraf/Figma/index.html",
+      "src": "Asraf/Asraf/Figma/**",
       "use": "@vercel/static"
     }
   ],
@@ -14,10 +14,6 @@
     {
       "src": "/api/(.*)",
       "dest": "backend/server.js"
-    },
-    {
-      "src": "/admin/(.*)",
-      "dest": "backend/admin/index.html"
     },
     {
       "src": "/(.*)",
