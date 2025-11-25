@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
+    const adminEmailInput = document.getElementById('admin-email');
     const adminPasswordInput = document.getElementById('admin-password');
     const loginError = document.getElementById('login-error');
     const loginContainer = document.getElementById('login-container');
@@ -7,54 +8,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutButton = document.getElementById('logout-button');
     const navButtons = document.querySelectorAll('.nav-button');
     const dataSections = document.querySelectorAll('.data-section');
+    const forgotPasswordLink = document.getElementById('forgot-password-link');
 
-    const ADMIN_PASSWORD_KEY = 'admin_session_password';
-    const API_BASE_URL = 'https://student-id-web.vercel.app'; // Base URL for the backend API
+    const ADMIN_AUTH_TOKEN_KEY = 'admin_auth_token'; // Will store a token in the future
+    const API_BASE_URL = 'https://student-id-web.vercel.app';
 
     // --- Check Login on Page Load ---
     function checkLogin() {
-        const storedPassword = localStorage.getItem(ADMIN_PASSWORD_KEY);
-        if (storedPassword) {
-            // If password exists, show dashboard and fetch data
+        const storedToken = localStorage.getItem(ADMIN_AUTH_TOKEN_KEY);
+        if (storedToken) {
             loginContainer.style.display = 'none';
             dashboardContainer.style.display = 'flex';
             fetchData('callback-requests');
         } else {
-            // Otherwise, show the login form
             loginContainer.style.display = 'flex';
             dashboardContainer.style.display = 'none';
         }
     }
 
-    // Initial check when the page loads
     checkLogin();
-
 
     // Handle Login
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const email = adminEmailInput.value;
         const password = adminPasswordInput.value;
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/admin/verify-password`, {
+            const response = await fetch(`${API_BASE_URL}/api/admin/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ password })
+                body: JSON.stringify({ email, password })
             });
 
             if (response.ok) {
-                localStorage.setItem(ADMIN_PASSWORD_KEY, password);
+                // For now, we'll store the password as the 'token'. This should be replaced with a real JWT.
+                localStorage.setItem(ADMIN_AUTH_TOKEN_KEY, password);
                 loginError.textContent = '';
-                
-                // Show dashboard and hide login form
-                loginContainer.style.display = 'none';
-                dashboardContainer.style.display = 'flex';
-                
-                // Fetch initial data
-                fetchData('callback-requests');
+                checkLogin(); // Re-run checkLogin to show dashboard and fetch data
             } else {
-                const errorText = await response.text();
-                loginError.textContent = `Login failed: ${errorText}`;
+                loginError.textContent = 'Login failed: Invalid email or password.';
             }
         } catch (error) {
             loginError.textContent = 'An error occurred during login.';
@@ -63,12 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle Logout
     logoutButton.addEventListener('click', () => {
-        localStorage.removeItem(ADMIN_PASSWORD_KEY);
-        adminPasswordInput.value = ''; // Clear password field
-        
-        // Show login form and hide dashboard
-        loginContainer.style.display = 'flex';
-        dashboardContainer.style.display = 'none';
+        localStorage.removeItem(ADMIN_AUTH_TOKEN_KEY);
+        adminEmailInput.value = '';
+        adminPasswordInput.value = '';
+        checkLogin(); // Re-run checkLogin to show the login screen
+    });
+
+    // Forgot Password Link
+    forgotPasswordLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Forgot Password functionality will be implemented in the next phase.');
     });
 
     // Handle Navigation
@@ -76,27 +73,20 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             navButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-
-            // Hide all sections
-            dataSections.forEach(section => {
-                section.style.display = 'none';
-            });
             
-            // Show the target section
             const targetId = button.dataset.target;
+            dataSections.forEach(section => section.style.display = 'none');
             document.getElementById(targetId).style.display = 'block';
             
-            fetchData(targetId); // Fetch data for the newly active section
+            fetchData(targetId);
         });
     });
 
     // Function to fetch and display data
     async function fetchData(endpoint) {
-        const storedPassword = localStorage.getItem(ADMIN_PASSWORD_KEY);
-        if (!storedPassword) {
-            // If password is gone, force back to login screen
-            loginContainer.style.display = 'flex';
-            dashboardContainer.style.display = 'none';
+        const storedToken = localStorage.getItem(ADMIN_AUTH_TOKEN_KEY);
+        if (!storedToken) {
+            checkLogin();
             return;
         }
 
@@ -105,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         tableContainer.innerHTML = '<p>Loading data...</p>';
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/admin/${endpoint}?password=${storedPassword}`);
+            // The password is sent as a query param for now, matching the backend middleware
+            const response = await fetch(`${API_BASE_URL}/api/admin/${endpoint}?password=${storedToken}`);
             if (response.ok) {
                 const data = await response.json();
                 renderTable(data, tableContainer, endpoint);
@@ -113,10 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const errorText = await response.text();
                 tableContainer.innerHTML = `<p class="error-message">Error fetching data: ${errorText}</p>`;
                 if (response.status === 401) {
-                    // If auth fails, log out user
-                    localStorage.removeItem(ADMIN_PASSWORD_KEY);
-                    loginContainer.style.display = 'flex';
-                    dashboardContainer.style.display = 'none';
+                    logoutButton.click(); // Force logout if unauthorized
                 }
             }
         } catch (error) {
@@ -124,8 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tableContainer.innerHTML = `<p class="error-message">An error occurred while fetching data.</p>`;
         }
     }
-
-    // Function to render data into a table
+    
+    // Function to render data into a table (assuming this function exists and is correct)
     function renderTable(data, container, endpoint) {
         if (!data || data.length === 0) {
             container.innerHTML = '<p>No data available.</p>';
@@ -151,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const headerRow = document.createElement('tr');
         headers.forEach(headerText => {
             const th = document.createElement('th');
-            th.textContent = headerText.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+            th.textContent = headerText.replace(/([A-Z])/g, ' ').replace(/^./, str => str.toUpperCase());
             headerRow.appendChild(th);
         });
         thead.appendChild(headerRow);

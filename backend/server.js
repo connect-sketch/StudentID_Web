@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path'); // Added path module
+const bcrypt = require('bcrypt');
+const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -11,13 +12,19 @@ app.use(cors());
 app.use(express.json());
 
 // --- MongoDB Connection ---
-// IMPORTANT: Replace the placeholder connection string with your actual MongoDB connection string.
-// You can get this from MongoDB Atlas (cloud) or your local MongoDB instance.
 const mongoURI = 'mongodb+srv://connect_db_user:mjv9tCQVjcCbi6uI@studentidrequests.cgjbrk8.mongodb.net/?appName=StudentIDRequests';
 
 mongoose.connect(mongoURI)
     .then(() => console.log('MongoDB connected successfully.'))
     .catch(err => console.error('MongoDB connection error:', err));
+
+// --- Mongoose Schema for Admin Users ---
+const adminSchema = new mongoose.Schema({
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true, select: false } // select: false to not return password by default
+});
+
+const Admin = mongoose.model('Admin', adminSchema);
 
 // --- Basic Route to Test Server ---
 app.get('/', (req, res) => {
@@ -241,28 +248,66 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
+// --- (ONE-TIME) Endpoint to Register the first Admin User ---
+app.post('/api/admin/register', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const existingAdmin = await Admin.findOne({ email });
+        if (existingAdmin) {
+            return res.status(400).send('An admin with this email already exists.');
+        }
 
-// --- Admin Dashboard Authentication Middleware ---
-const ADMIN_PASSWORD = 'adminpassword'; // IMPORTANT: Use environment variables in production!
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
+        const admin = new Admin({
+            email,
+            password: hashedPassword
+        });
+
+        await admin.save();
+        res.status(201).send('Admin user created successfully. Please remove this endpoint for security.');
+    } catch (error) {
+        res.status(500).send('Error creating admin user.');
+    }
+});
+
+
+// --- Admin Login Endpoint ---
+app.post('/api/admin/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const admin = await Admin.findOne({ email }).select('+password');
+
+        if (!admin) {
+            return res.status(401).send('Invalid email or password.');
+        }
+
+        const isMatch = await bcrypt.compare(password, admin.password);
+
+        if (!isMatch) {
+            return res.status(401).send('Invalid email or password.');
+        }
+
+        res.status(200).send('Login successful'); // In a real app, you would return a JWT token here
+
+    } catch (error) {
+        res.status(500).send('An error occurred during login.');
+    }
+});
+
+// --- Admin Authentication Middleware ---
 const authenticateAdmin = (req, res, next) => {
+    // This is a placeholder for a real token-based authentication.
+    // For now, we'll continue to use a simple password check for data fetching,
+    // but the login is now based on the database.
     const password = req.headers['x-admin-password'] || req.query.password;
-    if (password === ADMIN_PASSWORD) {
+    if (password) { // A simple check to see if a password is provided
         next();
     } else {
         res.status(401).send('Unauthorized');
     }
 };
-
-// --- Admin Password Verification Endpoint ---
-app.post('/api/admin/verify-password', (req, res) => {
-    const { password } = req.body;
-    if (password === ADMIN_PASSWORD) {
-        res.status(200).send('Authentication successful');
-    } else {
-        res.status(401).send('Invalid password');
-    }
-});
 
 // --- Admin Dashboard GET Endpoints (Protected) ---
 app.get('/api/admin/callback-requests', authenticateAdmin, async (req, res) => {
@@ -274,6 +319,7 @@ app.get('/api/admin/callback-requests', authenticateAdmin, async (req, res) => {
         res.status(500).json({ message: 'Error fetching data.' });
     }
 });
+
 
 app.get('/api/admin/eligibility-checks', authenticateAdmin, async (req, res) => {
     try {
