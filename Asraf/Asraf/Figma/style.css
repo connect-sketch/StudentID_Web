@@ -1379,7 +1379,7 @@ footer {
         right: -100%; /* Start off-screen */
         top: 0;
         flex-direction: column;
-        background-color: #000; /* Use theme appropriate background */
+        background-color: #A1FD02; /* THEME GREEN BACKGROUND */
         width: 60%;
         height: 100vh;
         padding-top: 5rem;
@@ -1397,7 +1397,7 @@ footer {
     }
     
     nav ul li a {
-        color: #A1FD02; /* Use theme green for text */
+        color: #fff; /* WHITE TEXT for visibility on green background */
     }
 
     /* Hero Section */
