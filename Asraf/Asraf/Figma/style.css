@@ -1379,9 +1379,7 @@ footer {
         right: -100%; /* Start off-screen */
         top: 0;
         flex-direction: column;
-        background-color: rgba(161, 253, 2, 0.5); /* MORE transparent theme green */
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px); /* For Safari */
+        background-color: #A1FD02; /* Solid THEME GREEN BACKGROUND */
         width: 60%;
         height: 100vh;
         padding-top: 5rem;
