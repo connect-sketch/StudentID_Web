@@ -1379,11 +1379,14 @@ footer {
         right: -100%; /* Start off-screen */
         top: 0;
         flex-direction: column;
-        background-color: #A1FD02; /* Solid THEME GREEN BACKGROUND */
+        background-color: rgba(161, 253, 2, 0.8); /* Semi-transparent theme green */
+        backdrop-filter: blur(10px); /* Apply blur to content behind */
+        -webkit-backdrop-filter: blur(10px); /* For Safari */
         width: 60%;
         height: 100vh;
         padding-top: 5rem;
         transition: right 0.3s ease-in-out;
+        z-index: 10; /* Ensure menu is on top */
     }
 
     nav ul.nav-active {
