@@ -1379,4 +1379,52 @@ footer {
         flex-direction: column;
         gap: 1rem;
     }
+
+    /* Logos Section */
+    .logos {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    /* Guides Section */
+    .guides-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Benefits Card Section */
+    .benefits-card .card-container {
+        flex-direction: column;
+    }
+
+    /* Gateway Section */
+    .gateway-features {
+        flex-direction: column;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+        max-width: 95%;
+    }
+
+    .testimonial-card {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Test Prep Section */
+    .test-prep-block {
+        width: 95%;
+        padding: 2rem 1rem;
+    }
+
+    .test-pane.active {
+        flex-direction: column;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
 }
