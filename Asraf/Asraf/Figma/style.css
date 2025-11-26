@@ -1450,4 +1450,9 @@ footer {
     .next-btn {
         display: none; /* Hide navigation buttons on mobile */
     }
+
+    /* Allow native touch scrolling for journey carousel on mobile */
+    .journey-carousel {
+        overflow-x: auto;
+    }
 }
