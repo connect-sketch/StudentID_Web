@@ -223,25 +223,59 @@
 }
 
 @media (max-width: 768px) {
+    .benefits-card-section {
+        flex-direction: row; /* Allow horizontal layout */
+        flex-wrap: nowrap; /* Prevent wrapping initially */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        justify-content: flex-start; /* Align cards to the start */
+        -webkit-overflow-scrolling: touch; /* Improve scrolling on iOS */
+    }
+
+    .benefits-card {
+        flex: 0 0 280px; /* Fixed width for card to allow horizontal scrolling */
+        min-height: 350px; /* Adjusted height */
+        padding: 15px;
+    }
+
     .card-container {
-        flex-direction: column;
+        flex-direction: column; /* Stack columns within each smaller card */
     }
 
     .left-column {
         width: 100%;
-        height: 250px; /* Adjust height for mobile */
-        border-radius: 15px 15px 0 0; /* Adjust border radius for stacked layout */
+        height: 150px; /* Reduced height for stacked layout */
+        border-radius: 10px 10px 0 0; /* Adjust border radius for stacked layout */
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .country-name {
+        font-size: 2.5rem; /* Slightly smaller font size for country name */
     }
 
     .right-column {
-        padding: 20px; /* Adjust padding for mobile */
+        padding: 15px; /* Adjust padding for mobile */
+        text-align: center; /* Center content when stacked */
     }
 
     .right-column h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem; /* Smaller font size for heading */
+        margin-bottom: 10px;
+    }
+
+    .right-column ul {
+        padding-left: 0; /* Remove left padding */
+        list-style: none; /* Remove bullet points when stacked */
+        margin-bottom: 10px;
     }
 
     .right-column ul li {
+        font-size: 0.9rem; /* Smaller font size for list items */
+        margin-bottom: 5px;
+    }
+
+    .expert-button {
+        padding: 8px 15px; /* Smaller button padding */
         font-size: 0.9rem;
     }
 }
