@@ -15,8 +15,16 @@ document.addEventListener("DOMContentLoaded", function() {
     journeySteps.style.width = `${numCards * cardWidth}px`;
 
     function updateCarousel() {
-        const offset = -currentPage * cardsToShow * cardWidth;
-        journeySteps.style.transform = `translateX(${offset}px)`;
+        if (window.innerWidth > 768) {
+            // Desktop: Use transform for button navigation
+            const offset = -currentPage * cardsToShow * cardWidth;
+            journeySteps.style.transform = `translateX(${offset}px)`;
+            journeySteps.style.justifyContent = ''; // Reset justification
+        } else {
+            // Mobile: Let native scrolling handle it
+            journeySteps.style.transform = 'none';
+            journeySteps.style.justifyContent = 'flex-start'; // Ensure items start from the left
+        }
 
         prevBtn.disabled = currentPage === 0;
         nextBtn.disabled = currentPage >= totalPages - 1;
