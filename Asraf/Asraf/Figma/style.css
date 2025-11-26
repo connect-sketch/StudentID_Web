@@ -1397,7 +1397,7 @@ footer {
     }
     
     nav ul li a {
-        color: #fff; /* WHITE TEXT for visibility on green background */
+        color: #000; /* BLACK TEXT for visibility on green background */
     }
 
     /* Hero Section */
