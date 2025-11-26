@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Hamburger Menu ---
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const navUl = document.querySelector('nav ul');
+
+    hamburgerMenu.addEventListener('click', () => {
+        navUl.classList.toggle('nav-active');
+    });
+
     const studentImage = document.getElementById('student-image');
     const studentName = document.getElementById('student-name');
     const studentLocation = document.getElementById('student-location');
