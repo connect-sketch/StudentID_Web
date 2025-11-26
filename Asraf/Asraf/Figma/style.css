@@ -1379,7 +1379,7 @@ footer {
         right: -100%; /* Start off-screen */
         top: 0;
         flex-direction: column;
-        background-color: #333;
+        background-color: #000; /* Use theme appropriate background */
         width: 60%;
         height: 100vh;
         padding-top: 5rem;
@@ -1394,6 +1394,10 @@ footer {
         margin-left: 0;
         text-align: center;
         margin-bottom: 2rem;
+    }
+    
+    nav ul li a {
+        color: #A1FD02; /* Use theme green for text */
     }
 
     /* Hero Section */
