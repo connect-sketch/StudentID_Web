@@ -2,9 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Hamburger Menu ---
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navUl = document.querySelector('nav ul');
+    const menuOverlay = document.querySelector('.menu-overlay');
 
     hamburgerMenu.addEventListener('click', () => {
         navUl.classList.toggle('nav-active');
+        menuOverlay.classList.toggle('active');
+    });
+
+    // Close menu when clicking on the overlay
+    menuOverlay.addEventListener('click', () => {
+        navUl.classList.remove('nav-active');
+        menuOverlay.classList.remove('active');
     });
 
     const studentImage = document.getElementById('student-image');
