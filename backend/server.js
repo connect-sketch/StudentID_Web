@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // --- MongoDB Connection ---
-const mongoURI = 'mongodb+srv://connect_db_user:mjv9tCQVjcCbi6uI@studentidrequests.cgjbrk8.mongodb.net/?appName=StudentIDRequests';
+const mongoURI = process.env.MONGO_URI;
 
 mongoose.connect(mongoURI)
     .then(() => console.log('MongoDB connected successfully.'))
