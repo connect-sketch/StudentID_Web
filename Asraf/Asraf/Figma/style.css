@@ -1533,7 +1533,7 @@ footer {
         scrollbar-width: none;
     }
 
-    .journey-steps .step, .guide-card {
+    .journey-steps .step, .guide-card, .guide-card-layout-1, .guide-card-layout-2, .guide-card-layout-3 {
         flex: 0 0 393px; /* Match user-specified width */
         width: 393px; /* User-specified width */
         height: 391px; /* User-specified height */
