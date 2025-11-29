@@ -1479,8 +1479,19 @@ footer {
 
     /* Logos Section */
     .logos {
-        flex-direction: column;
-        gap: 2rem;
+        display: flex;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .student-work-logos-group {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        animation: scrollRight 10s linear infinite;
+    }
+
+    .logos img {
+        height: 30px;
     }
 
     /* Gateway Section */
