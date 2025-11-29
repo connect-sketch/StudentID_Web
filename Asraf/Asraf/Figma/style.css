@@ -1442,7 +1442,7 @@ footer {
     .guide-card-layout-1, .guide-card-layout-2, .guide-card-layout-3 {
         flex: 0 0 280px; /* Give cards a fixed base width so they don't shrink */
         width: 280px; /* Explicit width */
-        height: 230px; /* Further decreased height for mobile */
+        height: 200px; /* Further decreased height for mobile */
         padding: 0.7rem; /* Adjusted padding to fit */
         overflow: hidden; /* Hide overflowing content */
     }
