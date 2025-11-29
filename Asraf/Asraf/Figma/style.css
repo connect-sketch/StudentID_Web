@@ -1532,8 +1532,8 @@ footer {
         padding-bottom: 1.5rem;
         -webkit-overflow-scrolling: touch;
         gap: 1.5rem;
-        padding-left: 0rem; /* Set to 0 to touch the left edge */
-        padding-right: 1rem;
+        padding-left: 0rem;
+        padding-right: 0rem; /* Set to 0 to touch the right edge */
     }
 
     .journey-steps::-webkit-scrollbar, .guides-container::-webkit-scrollbar {
