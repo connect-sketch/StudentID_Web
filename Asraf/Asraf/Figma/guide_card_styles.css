@@ -106,18 +106,18 @@
 }
 
 .guides-container .explore-now-button {
-    padding: 10px 20px;
+    padding: 6px 12px; /* Reduced by ~40% */
     background-color: black;
     color: white !important;
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 9px; /* Reduced by ~40% */
     font-weight: 600;
     text-align: center;
     text-decoration: none;
     border-radius: 25px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px !important; /* Added !important for testing */
+    margin-bottom: 10px; /* Reverted !important */
 }
 
 .guides-container .explore-now-button:hover {
