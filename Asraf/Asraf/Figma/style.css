@@ -1437,15 +1437,26 @@ footer {
         justify-content: flex-start; /* Align cards to the start */
         padding-bottom: 1.5rem; /* Add space for scrollbar */
         -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+        gap: 1.5rem; /* Space between cards */
+        padding-left: 1rem; /* Padding for the first card */
+        padding-right: 1rem; /* Padding for the last card */
     }
 
-    .guide-card-layout-1, .guide-card-layout-2, .guide-card-layout-3 {
-        flex: 0 0 280px; /* Give cards a fixed base width */
-        width: 280px; /* Explicit width */
-        height: 250px; /* Fixed height for mobile */
-        padding: 1rem; /* Adjust padding */
+    .guides-container::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for a cleaner look */
+    }
+    .guides-container {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .guide-card {
+        flex: 0 0 320px; /* Increased width for mobile */
+        width: 320px; /* Explicit width */
+        height: 220px; /* Decreased height for mobile */
+        padding: 1rem; /* Adjusted padding */
         overflow: hidden; /* Hide overflowing content */
-        margin-right: 1.5rem; /* Space between cards */
+        margin-right: 1.5rem; /* Space between cards for better visual separation */
     }
 
     /* Gateway Section */
