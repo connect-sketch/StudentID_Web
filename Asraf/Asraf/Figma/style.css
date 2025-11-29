@@ -1531,9 +1531,9 @@ footer {
         justify-content: flex-start;
         padding-bottom: 1.5rem;
         -webkit-overflow-scrolling: touch;
-        gap: 1.5rem;
+        /* gap: 1.5rem; */ /* Removed gap */
         padding-left: 0rem;
-        padding-right: 0rem; /* Set to 0 to touch the right edge */
+        padding-right: 0rem;
     }
 
     .journey-steps::-webkit-scrollbar, .guides-container::-webkit-scrollbar {
@@ -1551,6 +1551,7 @@ footer {
         border-radius: 20px; /* User-specified border-radius */
         opacity: 1; /* User-specified opacity */
         overflow: hidden; /* Hide overflowing content if height is too small */
+        margin-right: 1.5rem; /* Added margin instead of gap */
     }
 
     .prev-btn,
