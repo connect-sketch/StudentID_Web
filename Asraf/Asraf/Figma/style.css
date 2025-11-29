@@ -1442,36 +1442,35 @@ footer {
     .guide-card-layout-1, .guide-card-layout-2, .guide-card-layout-3 {
         flex: 0 0 280px; /* Give cards a fixed base width so they don't shrink */
         width: 280px; /* Explicit width */
-        height: 350px; /* Decreased height for mobile */
-        padding: 1rem; /* Adjust padding */
+        height: 280px; /* Further decreased height for mobile */
+        padding: 0.8rem; /* Adjusted padding */
     }
 
     .guide-card-layout-1 .guide-card-main-image,
     .guide-card-layout-2 .guide-card-main-image,
     .guide-card-layout-3 .guide-card-main-image {
-        max-height: 120px; /* Adjust image height */
-        width: auto;
-        margin-bottom: 0.5rem;
+        max-height: 100px; /* Adjusted image height */
+        margin-bottom: 0.4rem;
     }
 
     .guide-card-content .guide-card-title {
-        font-size: 1rem; /* Smaller title */
-        margin-bottom: 0.5rem;
+        font-size: 0.95rem; /* Smaller title */
+        margin-bottom: 0.4rem;
     }
 
     .guide-card-content .guide-card-title img {
-        height: 25px; /* Smaller icon */
+        height: 22px; /* Smaller icon */
     }
 
     .guide-card-content .guide-card-subtitle {
-        font-size: 0.75rem; /* Smaller subtitle */
-        line-height: 1.3;
-        margin-bottom: 0.8rem;
+        font-size: 0.7rem; /* Smaller subtitle */
+        line-height: 1.2;
+        margin-bottom: 0.6rem;
     }
 
     .guide-card-content .explore-now-button {
-        padding: 0.5rem 1rem; /* Smaller button */
-        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem; /* Smaller button */
+        font-size: 0.75rem;
     }
 
     /* Gateway Section */
