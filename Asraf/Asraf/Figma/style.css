@@ -1430,36 +1430,26 @@ footer {
 
     /* Guides Section */
     .guides-container {
-        flex-direction: column; /* Stack vertically */
-        flex-wrap: wrap; /* Allow wrapping */
-        overflow-x: hidden; /* No horizontal scrolling */
-        justify-content: center; /* Center items */
-        padding-bottom: 0; /* Remove extra padding */
-        -webkit-overflow-scrolling: auto; /* Revert scrolling behavior */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap; /* Prevent wrapping, force horizontal layout */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        justify-content: flex-start; /* Align cards to the start */
+        padding-bottom: 1.5rem; /* Add space for scrollbar */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
 
     .guide-card {
-        flex: 0 0 auto; /* Revert flex sizing */
-        width: 90%; /* Take up most of the mobile width */
-        max-width: 350px; /* Max width to prevent it from getting too large on tablets */
-        margin-bottom: 1.5rem; /* Space between stacked cards */
-        padding: 1.5rem; /* Restore original padding */
+        flex: 0 0 300px; /* Give cards a fixed base width of 300px */
+        width: 300px; /* Explicitly set width */
     }
-
-    .guide-card-content h3 {
-        font-size: 1.2rem; /* Restore font size */
-    }
-
-    .guide-card-content p {
-        font-size: 0.9rem; /* Restore font size */
-    }
-
-    .guide-card-content span {
-        font-size: 0.9rem; /* Restore font size */
-    }
-
+    
+    /* Reset styles from previous attempts if any */
+    .guide-card-content h3,
+    .guide-card-content p,
+    .guide-card-content span,
     .guide-card-content a {
-        font-size: 0.9rem; /* Restore font size */
+        font-size: inherit; /* Inherit from card or body */
     }
 
     /* Gateway Section */
