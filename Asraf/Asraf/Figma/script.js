@@ -2,18 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Hamburger Menu ---
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navUl = document.querySelector('nav ul');
+    const menuOverlay = document.querySelector('.menu-overlay'); // Select the new overlay
 
     hamburgerMenu.addEventListener('click', () => {
         navUl.classList.toggle('nav-active');
-        document.body.classList.toggle('menu-open');
+        menuOverlay.classList.toggle('active'); // Toggle overlay with menu
     });
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (event) => {
-        if (!navUl.contains(event.target) && !hamburgerMenu.contains(event.target) && navUl.classList.contains('nav-active')) {
-            navUl.classList.remove('nav-active');
-            document.body.classList.remove('menu-open');
-        }
+    // Close menu when clicking on the overlay
+    menuOverlay.addEventListener('click', () => {
+        navUl.classList.remove('nav-active');
+        menuOverlay.classList.remove('active'); // Hide overlay
     });
 
     const studentImage = document.getElementById('student-image');

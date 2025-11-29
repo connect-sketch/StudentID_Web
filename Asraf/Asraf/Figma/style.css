@@ -1382,7 +1382,7 @@ footer {
         background-color: rgba(161, 253, 2, 0.8); /* Semi-transparent theme green */
         backdrop-filter: blur(10px); /* Apply blur to content behind */
         -webkit-backdrop-filter: blur(10px); /* For Safari */
-        width: 100%; /* Make it full width */
+        width: 60%; /* Revert to 60% width */
         height: 100vh;
         padding-top: 5rem;
         transition: right 0.3s ease-in-out;
@@ -1391,12 +1391,6 @@ footer {
 
     nav ul.nav-active {
         right: 0; /* Slide in from the right */
-    }
-
-    /* Blur entire body when menu is open */
-    body.menu-open {
-        filter: blur(5px);
-        overflow: hidden; /* Prevent scrolling of main content */
     }
 
     nav ul li {
@@ -1512,7 +1506,7 @@ footer {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+        background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white for frost */
         backdrop-filter: blur(5px); /* Blur effect */
         -webkit-backdrop-filter: blur(5px); /* For Safari */
         z-index: 9; /* Below the menu (z-index: 10) */
