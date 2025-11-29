@@ -12,7 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close menu when clicking on the overlay
     menuOverlay.addEventListener('click', () => {
         navUl.classList.remove('nav-active');
-        menuOverlay.classList.remove('active'); // Hide overlay
+        menuOverlay.classList.remove('active');
+    });
+
+    // Close menu when a link is clicked
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navUl.classList.contains('nav-active')) {
+                navUl.classList.remove('nav-active');
+                menuOverlay.classList.remove('active');
+            }
+        });
     });
 
     const studentImage = document.getElementById('student-image');
