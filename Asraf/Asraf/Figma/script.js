@@ -265,6 +265,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Guides Carousel ---
+    const guidesCarousel = document.querySelector('.guides-carousel');
+    const guidesContainer = document.querySelector('.guides-container');
+    const guidesPrevBtn = document.querySelector('.guides-prev-btn');
+    const guidesNextBtn = document.querySelector('.guides-next-btn');
+    const guideCards = document.querySelectorAll('.guide-card');
+
+    if (guidesCarousel && guidesContainer && guidesPrevBtn && guidesNextBtn && guideCards.length > 0) {
+        let currentIndex = 0;
+        const cardWidth = guideCards[0].offsetWidth + parseInt(getComputedStyle(guidesContainer).gap);
+
+        guidesNextBtn.addEventListener('click', () => {
+            if (currentIndex < guideCards.length - 1) {
+                currentIndex++;
+                guidesContainer.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            }
+        });
+
+        guidesPrevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                guidesContainer.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            }
+        });
+    }
+
     // --- Interaction Logging ---
     async function sendInteractionLog(eventType, source, details = {}) {
         try {
