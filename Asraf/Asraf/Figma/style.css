@@ -1464,6 +1464,17 @@ footer {
         scrollbar-width: none;  /* Firefox */
     }
 
+    .guide-card { /* Apply user-specified dimensions */
+        flex: 0 0 393px; /* Match user-specified width */
+        width: 393px; /* User-specified width */
+        height: 391px; /* User-specified height */
+        border-radius: 20px; /* User-specified border-radius */
+        opacity: 1; /* User-specified opacity */
+        padding: 1.5rem; /* Default padding, adjust if needed */
+        overflow: hidden; /* Hide overflowing content if height is too small */
+        margin-right: 1.5rem; /* Space between cards */
+    }
+
     /* Gateway Section */
     .gateway-features {
         flex-direction: column;
