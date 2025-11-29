@@ -1146,13 +1146,27 @@ footer {
     color: #333;
 }
 
-.guides-container {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    position: relative;
-}
+    /* Guides Section */
+    .guides-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap; /* Prevent wrapping, force horizontal layout */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        justify-content: flex-start; /* Align cards to the start */
+        padding-bottom: 1.5rem; /* Add space for scrollbar */
+        -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+        gap: 1.5rem; /* Space between cards */
+        padding-left: 1rem; /* Padding for the first card */
+        padding-right: 1rem; /* Padding for the last card */
+    }
+
+    .guides-container::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for a cleaner look */
+    }
+    .guides-container {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
 
 .guide-card {
     background-color: #f8f9fa;
