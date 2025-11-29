@@ -461,6 +461,7 @@ nav ul li a:hover {
 .guides-carousel {
     position: relative;
     overflow: hidden;
+    z-index: 1; /* Added to bring carousel to front */
 }
 
 .prev-btn,
