@@ -1532,7 +1532,7 @@ footer {
         padding-bottom: 1.5rem;
         -webkit-overflow-scrolling: touch;
         gap: 1.5rem;
-        padding-left: 1rem;
+        padding-left: 0.5rem; /* Reduced from 1rem */
         padding-right: 1rem;
     }
 
