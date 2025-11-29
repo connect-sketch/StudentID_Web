@@ -1556,9 +1556,9 @@ footer {
     }
 
     .journey-steps .step {
-        flex: 0 0 393px;
-        width: 393px;
-        height: 391px;
+        flex: 0 0 350px; /* Shrink width */
+        width: 350px; /* Shrink width */
+        height: 348px; /* Shrink height proportionally */
         border-radius: 20px;
         opacity: 1;
         overflow: hidden;
