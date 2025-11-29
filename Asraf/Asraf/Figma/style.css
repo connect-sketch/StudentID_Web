@@ -1437,7 +1437,7 @@ footer {
         justify-content: flex-start; /* Align cards to the start */
         padding-bottom: 1.5rem; /* Add space for scrollbar */
         -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
-        gap: 1.5rem; /* Space between cards */
+        gap: 2rem; /* Restore desktop gap */
         padding-left: 1rem; /* Padding for the first card */
         padding-right: 1rem; /* Padding for the last card */
     }
@@ -1448,15 +1448,6 @@ footer {
     .guides-container {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
-    }
-
-    .guide-card { /* Target the generic guide-card class */
-        flex: 0 0 85vw; /* Increased width to 85% of viewport */
-        width: 85vw; /* Explicit width */
-        height: 110px; /* Reduced height to 50% of previous 220px */
-        padding: 0.5rem; /* Adjusted padding to fit */
-        overflow: hidden; /* Hide overflowing content */
-        margin-right: 1.5rem; /* Space between cards */
     }
 
     /* Gateway Section */
