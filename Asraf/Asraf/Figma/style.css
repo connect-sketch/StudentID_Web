@@ -1534,9 +1534,12 @@ footer {
     }
 
     .journey-steps .step, .guide-card {
-        flex: 0 0 280px;
-        width: 280px;
-        height: auto; /* Let content define height */
+        flex: 0 0 393px; /* Match user-specified width */
+        width: 393px; /* User-specified width */
+        height: 391px; /* User-specified height */
+        border-radius: 20px; /* User-specified border-radius */
+        opacity: 1; /* User-specified opacity */
+        overflow: hidden; /* Hide overflowing content if height is too small */
     }
 
     .prev-btn,
