@@ -1436,20 +1436,12 @@ footer {
         overflow-x: auto; /* Enable horizontal scrolling */
         justify-content: flex-start; /* Align cards to the start */
         padding-bottom: 1.5rem; /* Add space for scrollbar */
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
     }
 
-    .guide-card {
-        flex: 0 0 300px; /* Give cards a fixed base width of 300px */
-        width: 300px; /* Explicitly set width */
-    }
-    
-    /* Reset styles from previous attempts if any */
-    .guide-card-content h3,
-    .guide-card-content p,
-    .guide-card-content span,
-    .guide-card-content a {
-        font-size: inherit; /* Inherit from card or body */
+    .guide-card-layout-1, .guide-card-layout-2, .guide-card-layout-3 {
+        flex: 0 0 300px; /* Give cards a fixed base width so they don't shrink */
+        width: 300px; /* Explicit width */
     }
 
     /* Gateway Section */
