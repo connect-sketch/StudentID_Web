@@ -1524,7 +1524,7 @@ footer {
         text-align: left; /* Added to override parent text-align */
     }
 
-    .journey-steps, .guides-container {
+    .journey-steps {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -1532,9 +1532,18 @@ footer {
         justify-content: flex-start;
         padding-bottom: 1.5rem;
         -webkit-overflow-scrolling: touch;
-        gap: 1.5rem; /* Re-added gap */
+        gap: 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .guides-container {
+        overflow-x: auto;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
         padding-left: 0rem;
         padding-right: 0rem;
+        white-space: nowrap;
     }
 
     .journey-steps::-webkit-scrollbar, .guides-container::-webkit-scrollbar {
@@ -1545,14 +1554,23 @@ footer {
         scrollbar-width: none;
     }
 
-    .journey-steps .step, .guide-card, .guide-card-layout-1, .guide-card-layout-2, .guide-card-layout-3 {
-        flex: 0 0 393px; /* Match user-specified width */
-        width: 393px; /* User-specified width */
-        height: 391px; /* User-specified height */
-        border-radius: 20px; /* User-specified border-radius */
-        opacity: 1; /* User-specified opacity */
-        overflow: hidden; /* Hide overflowing content if height is too small */
-        /* margin-right: 1.5rem; */ /* Removed margin */
+    .journey-steps .step {
+        flex: 0 0 393px;
+        width: 393px;
+        height: 391px;
+        border-radius: 20px;
+        opacity: 1;
+        overflow: hidden;
+    }
+    
+    .guide-card, .guide-card-layout-1, .guide-card-layout-2, .guide-card-layout-3 {
+        display: inline-block;
+        width: 393px;
+        height: 391px;
+        border-radius: 20px;
+        opacity: 1;
+        overflow: hidden;
+        margin-right: 1.5rem;
     }
 
     .prev-btn,
