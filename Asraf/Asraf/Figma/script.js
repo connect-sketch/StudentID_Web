@@ -265,31 +265,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Guides Carousel ---
-    const guidesCarousel = document.querySelector('.guides-carousel');
-    const guidesContainer = document.querySelector('.guides-container');
-    const guidesPrevBtn = document.querySelector('.guides-prev-btn');
-    const guidesNextBtn = document.querySelector('.guides-next-btn');
-    const guideCards = document.querySelectorAll('.guide-card');
+    // --- Generic Carousel Initializer ---
+    function initializeCarousel(carouselSelector, containerSelector, prevBtnSelector, nextBtnSelector, cardSelector) {
+        const carousel = document.querySelector(carouselSelector);
+        const container = document.querySelector(containerSelector);
+        const prevBtn = document.querySelector(prevBtnSelector);
+        const nextBtn = document.querySelector(nextBtnSelector);
+        const cards = document.querySelectorAll(cardSelector);
 
-    if (guidesCarousel && guidesContainer && guidesPrevBtn && guidesNextBtn && guideCards.length > 0) {
-        let currentIndex = 0;
-        const cardWidth = guideCards[0].offsetWidth + parseInt(getComputedStyle(guidesContainer).gap);
+        if (carousel && container && prevBtn && nextBtn && cards.length > 0) {
+            let cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
 
-        guidesNextBtn.addEventListener('click', () => {
-            if (currentIndex < guideCards.length - 1) {
-                currentIndex++;
-                guidesContainer.scrollBy({ left: cardWidth, behavior: 'smooth' });
-            }
-        });
+            nextBtn.addEventListener('click', () => {
+                container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            });
 
-        guidesPrevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                guidesContainer.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-            }
-        });
+            prevBtn.addEventListener('click', () => {
+                container.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            });
+
+            window.addEventListener('resize', () => {
+                cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(container).gap);
+            });
+        }
     }
+
+    // Initialize both carousels
+    initializeCarousel('.journey-carousel', '.journey-steps', '.journey-carousel .prev-btn', '.journey-carousel .next-btn', '.journey-steps .step');
+    initializeCarousel('.guides-carousel', '.guides-container', '#guides-prev-btn', '#guides-next-btn', '.guide-card');
 
     // --- Interaction Logging ---
     async function sendInteractionLog(eventType, source, details = {}) {

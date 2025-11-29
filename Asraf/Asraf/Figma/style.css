@@ -457,7 +457,8 @@ nav ul li a:hover {
 }
 
 
-.journey-carousel {
+.journey-carousel,
+.guides-carousel {
     position: relative;
     overflow: hidden;
 }
@@ -1475,38 +1476,6 @@ footer {
         gap: 2rem;
     }
 
-    /* Guides Section */
-    .guides-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap; /* Prevent wrapping, force horizontal layout */
-        overflow-x: auto; /* Enable horizontal scrolling */
-        justify-content: flex-start; /* Align cards to the start */
-        padding-bottom: 1.5rem; /* Add space for scrollbar */
-        -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
-        gap: 1.5rem; /* Space between cards */
-        padding-left: 1rem; /* Padding for the first card */
-        padding-right: 1rem; /* Padding for the last card */
-    }
-
-    .guides-container::-webkit-scrollbar {
-        display: none; /* Hide scrollbar for a cleaner look */
-    }
-    .guides-container {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-    }
-
-    .guide-card {
-        flex: 0 0 393px; /* Match user-specified width */
-        width: 393px; /* User-specified width */
-        height: 391px; /* User-specified height */
-        border-radius: 20px; /* User-specified border-radius */
-        opacity: 1; /* User-specified opacity */
-        overflow: hidden; /* Hide overflowing content */
-    }
-
-
     /* Gateway Section */
     .gateway-features {
         flex-direction: column;
@@ -1538,34 +1507,41 @@ footer {
         gap: 2rem;
     }
 
-    /* Journey Section */
-    .journey-steps .step {
-        min-width: 300px; /* Reduced width for mobile */
-        height: 200px;
-        padding: 15px;
-        gap: 10px;
+    /* Journey Section & Guides Section on Mobile */
+    .journey-carousel, .guides-carousel {
+        overflow-x: auto;
     }
 
-    .journey-steps .step .step-number {
-        font-size: 120px; /* Reduced font size */
+    .journey-steps, .guides-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        gap: 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
-    .journey-steps .step .step-content h3 {
-        font-size: 20px;
+    .journey-steps::-webkit-scrollbar, .guides-container::-webkit-scrollbar {
+        display: none;
+    }
+    .journey-steps, .guides-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
-    .journey-steps .step .step-content p {
-        font-size: 14px;
+    .journey-steps .step, .guide-card {
+        flex: 0 0 280px;
+        width: 280px;
+        height: auto; /* Let content define height */
     }
 
     .prev-btn,
     .next-btn {
         display: none; /* Hide navigation buttons on mobile */
-    }
-
-    /* Allow native touch scrolling for journey carousel on mobile */
-    .journey-carousel {
-        overflow-x: auto;
     }
 
     .menu-overlay {
