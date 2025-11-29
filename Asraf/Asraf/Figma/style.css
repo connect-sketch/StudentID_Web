@@ -1451,8 +1451,8 @@ footer {
     }
 
     .guide-card { /* Target the generic guide-card class */
-        flex: 0 0 70vw; /* Increased width to 70% of viewport */
-        width: 70vw; /* Explicit width */
+        flex: 0 0 85vw; /* Increased width to 85% of viewport */
+        width: 85vw; /* Explicit width */
         height: 110px; /* Reduced height to 50% of previous 220px */
         padding: 0.5rem; /* Adjusted padding to fit */
         overflow: hidden; /* Hide overflowing content */
