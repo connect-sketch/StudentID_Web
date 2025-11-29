@@ -1521,6 +1521,7 @@ footer {
     /* Journey Section & Guides Section on Mobile */
     .journey-carousel, .guides-carousel {
         overflow-x: auto;
+        text-align: left; /* Added to override parent text-align */
     }
 
     .journey-steps, .guides-container {
@@ -1531,7 +1532,7 @@ footer {
         justify-content: flex-start;
         padding-bottom: 1.5rem;
         -webkit-overflow-scrolling: touch;
-        /* gap: 1.5rem; */ /* Removed gap */
+        gap: 1.5rem; /* Re-added gap */
         padding-left: 0rem;
         padding-right: 0rem;
     }
@@ -1551,7 +1552,7 @@ footer {
         border-radius: 20px; /* User-specified border-radius */
         opacity: 1; /* User-specified opacity */
         overflow: hidden; /* Hide overflowing content if height is too small */
-        margin-right: 1.5rem; /* Added margin instead of gap */
+        /* margin-right: 1.5rem; */ /* Removed margin */
     }
 
     .prev-btn,
