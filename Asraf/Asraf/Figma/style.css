@@ -1513,6 +1513,11 @@ footer {
         gap: 2rem;
     }
 
+    .guides-section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     /* Journey Section & Guides Section on Mobile */
     .journey-carousel, .guides-carousel {
         overflow-x: auto;
