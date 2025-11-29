@@ -6,8 +6,8 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: flex-end;
+    padding: 10px;
     transition: all 0.3s ease-in-out;
     box-sizing: border-box;
     position: relative;
@@ -35,7 +35,7 @@
 .guide-card-content {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 }
 
 .guide-card-main-image {
@@ -96,6 +96,11 @@
     transition: opacity 0.3s ease-in-out;
 }
 
+.download-button img {
+    width: 32px;
+    height: 32px;
+}
+
 .download-button:hover {
     opacity: 0.7;
 }
@@ -112,6 +117,7 @@
     border-radius: 25px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px; /* Added margin to lift the button */
 }
 
 .guides-container .explore-now-button:hover {
