@@ -1440,39 +1440,39 @@ footer {
     }
 
     .guide-card-layout-1, .guide-card-layout-2, .guide-card-layout-3 {
-        flex: 0 0 280px; /* Give cards a fixed base width so they don't shrink */
-        width: 320px; /* Explicit width */
-        height: 180px; /* Further decreased height for mobile */
-        padding: 0.7rem; /* Adjusted padding to fit */
+        flex: 0 0 250px; /* Decreased width for mobile */
+        width: 250px; /* Explicit width */
+        height: 200px; /* Further decreased height for mobile */
+        padding: 0.5rem; /* Adjusted padding to fit */
         overflow: hidden; /* Hide overflowing content */
     }
 
     .guide-card-layout-1 .guide-card-main-image,
     .guide-card-layout-2 .guide-card-main-image,
     .guide-card-layout-3 .guide-card-main-image {
-        max-height: 80px; /* Adjusted image height to fit */
+        max-height: 70px; /* Adjusted image height */
         width: auto;
         margin-bottom: 0.2rem; /* Reduced margin */
     }
 
     .guide-card-content .guide-card-title {
-        font-size: 1.2rem; /* Restore original font size */
+        font-size: 0.9rem; /* Smaller title */
         margin-bottom: 0.2rem; /* Reduced margin */
     }
 
     .guide-card-content .guide-card-title img {
-        height: 30px; /* Restore original icon size */
+        height: 20px; /* Smaller icon */
     }
 
     .guide-card-content .guide-card-subtitle {
-        font-size: 0.9rem; /* Restore original font size */
-        line-height: 1.4;
+        font-size: 0.65rem; /* Smaller subtitle */
+        line-height: 1.2;
         margin-bottom: 0.5rem; /* Reduced margin */
     }
 
     .guide-card-content .explore-now-button {
-        padding: 0.6rem 1.2rem; /* Restore original button size */
-        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem; /* Smaller button */
+        font-size: 0.7rem;
     }
 
     /* Gateway Section */
