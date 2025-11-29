@@ -5,6 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     hamburgerMenu.addEventListener('click', () => {
         navUl.classList.toggle('nav-active');
+        document.body.classList.toggle('menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!navUl.contains(event.target) && !hamburgerMenu.contains(event.target) && navUl.classList.contains('nav-active')) {
+            navUl.classList.remove('nav-active');
+            document.body.classList.remove('menu-open');
+        }
     });
 
     const studentImage = document.getElementById('student-image');
