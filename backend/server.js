@@ -21,7 +21,7 @@ app.use(express.json());
 // --- Configuration ---
 const GOOGLE_CLIENT_ID = '329586274471-bb5c6v0g2qlpli5njldko1iu41950u8o.apps.googleusercontent.com';
 const JWT_SECRET = process.env.JWT_SECRET || 'your-default-secret-for-dev'; // Use a strong secret in production
-const ALLOWED_ADMIN_EMAILS = ['connect@thestudentid.com']; // ADD YOUR GOOGLE EMAIL HERE
+const ALLOWED_ADMIN_EMAILS = ['connect@thestudentid.com', 'asrafcena2018@gmail.com']; // ADD YOUR GOOGLE EMAIL HERE
 
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
