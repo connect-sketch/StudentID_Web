@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const testimonialText = document.getElementById('testimonial-text');
     const testimonialSwitcher = document.getElementById('testimonial-switcher');
 
-    const API_BASE_URL = 'https://student-id-admin.vercel.app';
+    const API_BASE_URL = ''; // Leave empty for relative paths in a single project
 
     if (testimonialSwitcher) {
         function createSwitcherButtons() {

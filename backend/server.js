@@ -38,9 +38,22 @@ const transporter = nodemailer.createTransport({
 // --- MongoDB Connection ---
 const mongoURI = process.env.MONGO_URI;
 
-mongoose.connect(mongoURI)
-    .then(() => console.log('MongoDB connected successfully.'))
-    .catch(err => console.error('MongoDB connection error:', err));
+if (!mongoURI) {
+    console.error('CRITICAL ERROR: MONGO_URI is not defined in environment variables.');
+} else {
+    mongoose.connect(mongoURI)
+        .then(() => console.log('MongoDB connected successfully.'))
+        .catch(err => {
+            console.error('MongoDB connection error details:');
+            console.error('Error Name:', err.name);
+            console.error('Error Message:', err.message);
+            if (err.message.includes('authentication failed')) {
+                console.error('FIX: Check your database username and password in the connection string.');
+            } else if (err.message.includes('ETIMEDOUT')) {
+                console.error('FIX: Ensure you have allowed access from 0.0.0.0/0 in MongoDB Atlas Network Access.');
+            }
+        });
+}
 
 // --- Mongoose Schema for Admin Users ---
 const adminSchema = new mongoose.Schema({
