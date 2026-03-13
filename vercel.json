@@ -20,7 +20,7 @@
       "dest": "backend/server.js"
     },
     {
-      "src": "/admin/(.*\\.(js|css|png|jpg|svg|json|pdf))",
+      "src": "/admin/(.*)",
       "dest": "/admin/$1"
     },
     {
@@ -28,8 +28,8 @@
       "dest": "/admin/index.html"
     },
     {
-      "src": "/admin/(.*)",
-      "dest": "/admin/index.html"
+      "src": "/images/(.*)",
+      "dest": "/public/images/$1"
     },
     {
       "src": "/(.*)",
