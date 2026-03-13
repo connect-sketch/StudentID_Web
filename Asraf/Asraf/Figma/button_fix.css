@@ -1,0 +1,7 @@
+
+/* Force Button Clickability */
+.open-modal-btn, .open-eligibility-modal-btn {
+    position: relative;
+    z-index: 50; /* Ensure it's above hero images */
+    cursor: pointer;
+}

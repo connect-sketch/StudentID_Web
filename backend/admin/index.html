@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentID Admin Dashboard</title>
+    <link rel="icon" href="../../Asraf/Asraf/Figma/images/Student ID TAB.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin_login_style.css">
+    <link rel="stylesheet" href="admin_dashboard_style.css">
+    <link rel="stylesheet" href="stat_cards.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Google Identity Services Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+        <div id="login-container">
+            <div class="login-wrapper">
+                <!-- Left Branding Panel -->
+                <div class="branding-panel">
+                    <img src="https://raw.githubusercontent.com/connect-sketch/StudentID_Web/main/Asraf/Asraf/Figma/images/logo%20header.png" alt="StudentID Logo" class="brand-logo">
+                    <h2>Welcome to the<br>Admin Dashboard</h2>
+                    <p>Manage all your student data in one place.</p>
+                </div>
+
+                <!-- Right Login Form Panel -->
+                <div class="login-box">
+                    <h2>Admin Login</h2>
+                    
+                    <!-- Google Login Button -->
+                    <div id="google-login-btn"></div>
+                    
+                    <div class="login-divider">
+                        <span>OR</span>
+                    </div>
+
+                    <form id="login-form">
+                        <div class="input-group">
+                            <label for="admin-email">Email</label>
+                            <input type="email" id="admin-email" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="admin-password">Password</label>
+                            <input type="password" id="admin-password" required>
+                        </div>
+                        <button type="submit">Login</button>
+                    </form>
+                    <p id="login-error" class="error-message"></p>
+                    <a href="#" id="forgot-password-link">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+
+    <div id="dashboard-container" class="hidden">
+        <!-- New Sidebar Layout -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://raw.githubusercontent.com/connect-sketch/StudentID_Web/main/Asraf/Asraf/Figma/images/logo%20header.png" alt="StudentID Logo" class="sidebar-logo">
+            </div>
+            <nav>
+                <button class="nav-button active" data-target="home">Home</button>
+                <button class="nav-button" data-target="callback-requests">Callback Requests</button>
+                <button class="nav-button" data-target="eligibility-checks">Eligibility Checks</button>
+                <button class="nav-button" data-target="expert-requests">Expert Requests</button>
+                <button class="nav-button" data-target="counselling-sessions">Counselling Sessions</button>
+                <button class="nav-button" data-target="demo-requests">Demo Requests</button>
+                <button class="nav-button" data-target="interaction-logs">Interaction Logs</button>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-button">Logout</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <header>
+                <div class="header-text">
+                    <h1>👋 Welcome, Admin</h1>
+                    <p>Here are the latest submissions from your users.</p>
+                </div>
+            </header>
+            <main>
+                <section id="home" class="data-section">
+                    <h2>Dashboard Overview</h2>
+                    <div class="stat-cards-container">
+                        <div class="stat-card">
+                            <h3>Total Callbacks</h3>
+                            <p class="stat-number" id="stats-callbacks">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Eligibility Checks</h3>
+                            <p class="stat-number" id="stats-eligibility">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Expert Requests</h3>
+                            <p class="stat-number" id="stats-expert">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>New Sessions</h3>
+                            <p class="stat-number" id="stats-counselling">0</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="callback-requests" class="data-section hidden">
+                    <div class="section-header">
+                        <h2>Callback Requests</h2>
+                        <button class="download-csv-btn" data-target-table="callback-requests">Download CSV</button>
+                    </div>
+                    <div class="table-container"></div>
+                </section>
+                <section id="eligibility-checks" class="data-section hidden">
+                    <div class="section-header">
+                        <h2>Eligibility Checks</h2>
+                        <button class="download-csv-btn" data-target-table="eligibility-checks">Download CSV</button>
+                    </div>
+                    <div class="table-container"></div>
+                </section>
+                <section id="expert-requests" class="data-section hidden">
+                    <div class="section-header">
+                        <h2>Expert Requests</h2>
+                        <button class="download-csv-btn" data-target-table="expert-requests">Download CSV</button>
+                    </div>
+                    <div class="table-container"></div>
+                </section>
+                <section id="counselling-sessions" class="data-section hidden">
+                    <div class="section-header">
+                        <h2>Counselling Sessions</h2>
+                        <button class="download-csv-btn" data-target-table="counselling-sessions">Download CSV</button>
+                    </div>
+                    <div class="table-container"></div>
+                </section>
+                <section id="demo-requests" class="data-section hidden">
+                    <div class="section-header">
+                        <h2>Demo Requests</h2>
+                        <button class="download-csv-btn" data-target-table="demo-requests">Download CSV</button>
+                    </div>
+                    <div class="table-container"></div>
+                </section>
+                <section id="interaction-logs" class="data-section hidden">
+                    <div class="section-header">
+                        <h2>Interaction Logs</h2>
+                        <button class="download-csv-btn" data-target-table="interaction-logs">Download CSV</button>
+                    </div>
+                    <div class="table-container"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

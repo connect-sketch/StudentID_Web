@@ -1,0 +1,6 @@
+
+/* Hide hero buttons when mobile menu is open */
+body.menu-is-open .hero-buttons {
+    display: none !important;
+    pointer-events: none !important;
+}
