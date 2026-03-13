@@ -74,7 +74,8 @@ const callbackRequestSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
-    message: { type: String }
+    message: { type: String },
+    referralCode: { type: String, default: 'Direct' }
 }, { timestamps: true, collection: 'callback_requests' });
 
 const CallbackRequest = mongoose.model('CallbackRequest', callbackRequestSchema);
@@ -82,7 +83,7 @@ const CallbackRequest = mongoose.model('CallbackRequest', callbackRequestSchema)
 // --- API Endpoint for Callback Form Submissions ---
 app.post('/api/callback-requests', async (req, res) => {
     try {
-        const { name, email, phone, message } = req.body;
+        const { name, email, phone, message, referralCode } = req.body;
 
         // Basic validation
         if (!name || !email || !phone) {
@@ -93,7 +94,8 @@ app.post('/api/callback-requests', async (req, res) => {
             name,
             email,
             phone,
-            message
+            message,
+            referralCode: referralCode || 'Direct'
         });
 
         await newRequest.save();
@@ -110,7 +112,8 @@ const eligibilityCheckSchema = new mongoose.Schema({
     email: { type: String, required: true },
     highestQualification: { type: String, required: true },
     overallMarksGPA: { type: String, required: true },
-    standardizedTestScores: { type: String }
+    standardizedTestScores: { type: String },
+    referralCode: { type: String, default: 'Direct' }
 }, { timestamps: true });
 
 const EligibilityCheck = mongoose.model('EligibilityCheck', eligibilityCheckSchema);
@@ -118,7 +121,7 @@ const EligibilityCheck = mongoose.model('EligibilityCheck', eligibilityCheckSche
 // --- API Endpoint for Eligibility Check Form Submissions ---
 app.post('/api/eligibility-checks', async (req, res) => {
     try {
-        const { name, email, highestQualification, overallMarksGPA, standardizedTestScores } = req.body;
+        const { name, email, highestQualification, overallMarksGPA, standardizedTestScores, referralCode } = req.body;
 
         // Basic validation
         if (!name || !email || !highestQualification || !overallMarksGPA) {
@@ -130,7 +133,8 @@ app.post('/api/eligibility-checks', async (req, res) => {
             email,
             highestQualification,
             overallMarksGPA,
-            standardizedTestScores
+            standardizedTestScores,
+            referralCode: referralCode || 'Direct'
         });
 
         await newEligibilityCheck.save();
@@ -156,7 +160,8 @@ const expertRequestSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
-    country: { type: String, required: true }
+    country: { type: String, required: true },
+    referralCode: { type: String, default: 'Direct' }
 }, { timestamps: true });
 
 const ExpertRequest = mongoose.model('ExpertRequest', expertRequestSchema);
@@ -167,7 +172,8 @@ const counsellingSessionSchema = new mongoose.Schema({
     email: { type: String, required: true },
     phone: { type: String, required: true },
     sessionDate: { type: String, required: true },
-    sessionSlot: { type: String, required: true }
+    sessionSlot: { type: String, required: true },
+    referralCode: { type: String, default: 'Direct' }
 }, { timestamps: true });
 
 const CounsellingSession = mongoose.model('CounsellingSession', counsellingSessionSchema);
@@ -177,7 +183,8 @@ const demoRequestSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
-    testType: { type: String, required: true }
+    testType: { type: String, required: true },
+    referralCode: { type: String, default: 'Direct' }
 }, { timestamps: true });
 
 const DemoRequest = mongoose.model('DemoRequest', demoRequestSchema);
@@ -212,11 +219,17 @@ app.post('/api/interactions', async (req, res) => {
 // --- API Endpoint for Expert Requests ---
 app.post('/api/expert-requests', async (req, res) => {
     try {
-        const { name, email, phone, country } = req.body;
+        const { name, email, phone, country, referralCode } = req.body;
         if (!name || !email || !phone || !country) {
             return res.status(400).json({ message: 'Name, email, phone, and country are required.' });
         }
-        const newExpertRequest = new ExpertRequest({ name, email, phone, country });
+        const newExpertRequest = new ExpertRequest({ 
+            name, 
+            email, 
+            phone, 
+            country,
+            referralCode: referralCode || 'Direct'
+        });
         await newExpertRequest.save();
         res.status(201).json({ message: 'Expert request received successfully.' });
     } catch (error) {
@@ -228,11 +241,18 @@ app.post('/api/expert-requests', async (req, res) => {
 // --- API Endpoint for Counselling Sessions ---
 app.post('/api/counselling-sessions', async (req, res) => {
     try {
-        const { name, email, phone, sessionDate, sessionSlot } = req.body;
+        const { name, email, phone, sessionDate, sessionSlot, referralCode } = req.body;
         if (!name || !email || !phone || !sessionDate || !sessionSlot) {
             return res.status(400).json({ message: 'All fields are required.' });
         }
-        const newCounsellingSession = new CounsellingSession({ name, email, phone, sessionDate, sessionSlot });
+        const newCounsellingSession = new CounsellingSession({ 
+            name, 
+            email, 
+            phone, 
+            sessionDate, 
+            sessionSlot,
+            referralCode: referralCode || 'Direct'
+        });
         await newCounsellingSession.save();
         res.status(201).json({ message: 'Counselling session booked successfully.' });
     } catch (error) {
@@ -244,11 +264,17 @@ app.post('/api/counselling-sessions', async (req, res) => {
 // --- API Endpoint for Demo Requests ---
 app.post('/api/demo-requests', async (req, res) => {
     try {
-        const { name, email, phone, testType } = req.body;
+        const { name, email, phone, testType, referralCode } = req.body;
         if (!name || !email || !phone || !testType) {
             return res.status(400).json({ message: 'Name, email, phone, and test type are required.' });
         }
-        const newDemoRequest = new DemoRequest({ name, email, phone, testType });
+        const newDemoRequest = new DemoRequest({ 
+            name, 
+            email, 
+            phone, 
+            testType,
+            referralCode: referralCode || 'Direct'
+        });
         await newDemoRequest.save();
         res.status(201).json({ message: 'Demo request received successfully.' });
     } catch (error) {

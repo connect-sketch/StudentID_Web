@@ -214,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
             eventType: 'Event Type',
             source: 'Source',
             details: 'Details',
+            referralCode: 'Referral Code',
             createdAt: 'Submission Date',
             updatedAt: 'Last Updated'
         };

@@ -34,6 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const testimonialText = document.getElementById('testimonial-text');
     const testimonialSwitcher = document.getElementById('testimonial-switcher');
 
+    // --- Referral/Influencer Tracking ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const refCode = urlParams.get('ref');
+    if (refCode) {
+        sessionStorage.setItem('influencer_ref', refCode);
+    }
+    const getRefCode = () => sessionStorage.getItem('influencer_ref') || 'Direct';
+
     const API_BASE_URL = ''; // Leave empty for relative paths in a single project
 
     if (testimonialSwitcher) {
@@ -200,8 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = callbackForm.querySelector('input[placeholder="Your Email"]').value;
             const phone = callbackForm.querySelector('input[placeholder="Your Phone Number"]').value;
             const message = callbackForm.querySelector('textarea').value;
+            const referralCode = getRefCode();
 
-            const formData = { name, email, phone, message };
+            const formData = { name, email, phone, message, referralCode };
 
             try {
                 const response = await fetch(`${API_BASE_URL}/api/callback-requests`, {
@@ -266,8 +275,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const highestQualification = eligibilityForm.querySelector('input[placeholder="Highest Qualification"]').value;
             const overallMarksGPA = eligibilityForm.querySelector('input[placeholder="Overall Marks/GPA"]').value;
             const standardizedTestScores = eligibilityForm.querySelector('input[placeholder="Standardized Test Scores"]').value;
+            const referralCode = getRefCode();
 
-            const formData = { name, email, highestQualification, overallMarksGPA, standardizedTestScores };
+            const formData = { name, email, highestQualification, overallMarksGPA, standardizedTestScores, referralCode };
 
             try {
                 const response = await fetch(`${API_BASE_URL}/api/eligibility-checks`, {
@@ -376,8 +386,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = expertForm.querySelector('input[placeholder="Your Email"]').value;
             const phone = expertForm.querySelector('input[placeholder="Your Phone Number"]').value;
             const country = expertCountryInput.value;
+            const referralCode = getRefCode();
 
-            const formData = { name, email, phone, country };
+            const formData = { name, email, phone, country, referralCode };
 
             try {
                 const response = await fetch(`${API_BASE_URL}/api/expert-requests`, {
@@ -430,8 +441,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const phone = counsellingForm.querySelector('input[placeholder="Your Phone Number"]').value;
             const sessionDate = counsellingForm.querySelector('#session-date').value;
             const sessionSlot = counsellingForm.querySelector('#session-slot').value;
+            const referralCode = getRefCode();
 
-            const formData = { name, email, phone, sessionDate, sessionSlot };
+            const formData = { name, email, phone, sessionDate, sessionSlot, referralCode };
 
             try {
                 const response = await fetch(`${API_BASE_URL}/api/counselling-sessions`, {
@@ -495,8 +507,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = demoForm.querySelector('input[placeholder="Your Email"]').value;
             const phone = demoForm.querySelector('input[placeholder="Your Phone Number"]').value;
             const testType = demoTestTypeInput.value;
+            const referralCode = getRefCode();
 
-            const formData = { name, email, phone, testType };
+            const formData = { name, email, phone, testType, referralCode };
 
             try {
                 const response = await fetch(`${API_BASE_URL}/api/demo-requests`, {
