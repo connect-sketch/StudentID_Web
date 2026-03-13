@@ -6,11 +6,11 @@
       "use": "@vercel/node"
     },
     {
-      "src": "Asraf/Asraf/Figma/**",
+      "src": "public/**",
       "use": "@vercel/static"
     },
     {
-      "src": "backend/admin/**",
+      "src": "admin/**",
       "use": "@vercel/static"
     }
   ],
@@ -20,20 +20,20 @@
       "dest": "backend/server.js"
     },
     {
-      "src": "/admin/(.*\\.(js|css|png|jpg|svg|json))",
-      "dest": "backend/admin/$1"
+      "src": "/admin/(.*\\.(js|css|png|jpg|svg|json|pdf))",
+      "dest": "admin/$1"
     },
     {
       "src": "/admin",
-      "dest": "backend/admin/index.html"
+      "dest": "admin/index.html"
     },
     {
       "src": "/admin/(.*)",
-      "dest": "backend/admin/index.html"
+      "dest": "admin/index.html"
     },
     {
       "src": "/(.*)",
-      "dest": "Asraf/Asraf/Figma/$1"
+      "dest": "public/$1"
     }
   ]
 }
