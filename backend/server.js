@@ -11,7 +11,11 @@ const app = express();
 const port = 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: ['https://www.thestudentid.com', 'https://thestudentid.com', 'https://student-id-admin.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // --- Configuration ---
