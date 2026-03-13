@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const testimonialText = document.getElementById('testimonial-text');
     const testimonialSwitcher = document.getElementById('testimonial-switcher');
 
-    const API_BASE_URL = 'https://student-id-web.vercel.app';
+    const API_BASE_URL = window.location.origin;
 
     if (testimonialSwitcher) {
         function createSwitcherButtons() {

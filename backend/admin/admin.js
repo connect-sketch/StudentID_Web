@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const forgotPasswordLink = document.getElementById('forgot-password-link');
 
     const ADMIN_AUTH_TOKEN_KEY = 'admin_auth_token';
-    const API_BASE_URL = 'http://localhost:3000'; // Changed to localhost for your testing
+    const API_BASE_URL = window.location.origin; // Dynamically use the current origin
     const GOOGLE_CLIENT_ID = '329586274471-bb5c6v0g2qlpli5njldko1iu41950u8o.apps.googleusercontent.com';
 
     // --- Check Login on Page Load ---
