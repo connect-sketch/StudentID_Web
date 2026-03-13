@@ -6,11 +6,11 @@
       "use": "@vercel/node"
     },
     {
-      "src": "public/**",
+      "src": "public/**/*",
       "use": "@vercel/static"
     },
     {
-      "src": "admin/**",
+      "src": "admin/**/*",
       "use": "@vercel/static"
     }
   ],
@@ -21,19 +21,19 @@
     },
     {
       "src": "/admin/(.*\\.(js|css|png|jpg|svg|json|pdf))",
-      "dest": "admin/$1"
+      "dest": "/admin/$1"
     },
     {
       "src": "/admin",
-      "dest": "admin/index.html"
+      "dest": "/admin/index.html"
     },
     {
       "src": "/admin/(.*)",
-      "dest": "admin/index.html"
+      "dest": "/admin/index.html"
     },
     {
       "src": "/(.*)",
-      "dest": "public/$1"
+      "dest": "/public/$1"
     }
   ]
 }
