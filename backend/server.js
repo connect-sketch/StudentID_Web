@@ -290,33 +290,45 @@ app.post('/api/contact', async (req, res) => {
 app.post('/api/admin/google-login', async (req, res) => {
     try {
         const { idToken } = req.body;
+        if (!idToken) {
+            console.error('Login Error: No idToken provided in request body');
+            return res.status(400).send('No ID Token provided.');
+        }
+
+        console.log('Attempting to verify Google Token...');
+        
         const ticket = await client.verifyIdToken({
             idToken,
             audience: GOOGLE_CLIENT_ID
+        }).catch(err => {
+            console.error('Google Token Verification Failed:', err.message);
+            throw err;
         });
 
         const payload = ticket.getPayload();
         const email = payload['email'];
+        console.log(`Login attempt for email: ${email}`);
 
         if (!ALLOWED_ADMIN_EMAILS.includes(email)) {
+            console.warn(`Access Denied: ${email} is not in the allowed list.`);
             return res.status(403).send('Access denied: You are not an authorized admin.');
         }
 
-        // Check if admin exists in DB, if not create them
+        // Check if admin exists in DB
         let admin = await Admin.findOne({ email });
         if (!admin) {
+            console.log(`Creating new Google admin record for: ${email}`);
             admin = new Admin({ email, authProvider: 'google' });
             await admin.save();
         }
 
-        // Generate JWT
         const token = jwt.sign({ email }, JWT_SECRET, { expiresIn: '24h' });
-
+        console.log('Login Successful, JWT generated.');
         res.status(200).json({ token });
 
     } catch (error) {
-        console.error('Error in google login:', error);
-        res.status(500).send('An error occurred during authentication.');
+        console.error('FULL LOGIN ERROR:', error);
+        res.status(500).send(`Authentication Error: ${error.message}`);
     }
 });
 
