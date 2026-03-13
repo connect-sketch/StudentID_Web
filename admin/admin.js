@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             google.accounts.id.renderButton(
                 document.getElementById('google-login-btn'),
-                { theme: 'outline', size: 'large', width: '100%' }
+                { theme: 'outline', size: 'large', width: 280 }
             );
         } else {
             // Retry after a short delay if script hasn't loaded yet
