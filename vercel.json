@@ -20,11 +20,15 @@
       "dest": "backend/server.js"
     },
     {
-      "src": "/admin/(.*)",
+      "src": "/admin/(.*\\.(js|css|png|jpg|svg|json))",
       "dest": "backend/admin/$1"
     },
     {
       "src": "/admin",
+      "dest": "backend/admin/index.html"
+    },
+    {
+      "src": "/admin/(.*)",
       "dest": "backend/admin/index.html"
     },
     {
