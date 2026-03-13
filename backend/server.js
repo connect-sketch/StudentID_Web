@@ -312,6 +312,53 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
+// --- Influencer Stats Endpoint (Public but Masked) ---
+app.get('/api/influencer/:refCode', async (req, res) => {
+    try {
+        const { refCode } = req.params;
+
+        // Helper function to mask name: "John Doe" -> "J***e"
+        const maskName = (name) => {
+            if (!name) return "Unknown";
+            const parts = name.trim().split(' ');
+            if (parts.length === 1) {
+                return name[0] + "***" + name[name.length - 1];
+            }
+            const firstPart = parts[0];
+            const lastPart = parts[parts.length - 1];
+            return firstPart[0] + "***" + lastPart[lastPart.length - 1];
+        };
+
+        // Fetch data from all relevant collections
+        const [callbacks, eligibility, experts] = await Promise.all([
+            CallbackRequest.find({ referralCode: refCode }).select('name createdAt'),
+            EligibilityCheck.find({ referralCode: refCode }).select('name createdAt'),
+            ExpertRequest.find({ referralCode: refCode }).select('name createdAt')
+        ]);
+
+        // Combine and format
+        const combinedList = [
+            ...callbacks.map(item => ({ name: maskName(item.name), type: 'Callback', date: item.createdAt })),
+            ...eligibility.map(item => ({ name: maskName(item.name), type: 'Eligibility', date: item.createdAt })),
+            ...experts.map(item => ({ name: maskName(item.name), type: 'Expert', date: item.createdAt }))
+        ].sort((a, b) => b.date - a.date);
+
+        res.json({
+            total: combinedList.length,
+            breakdown: {
+                callbacks: callbacks.length,
+                eligibility: eligibility.length,
+                experts: experts.length
+            },
+            list: combinedList
+        });
+
+    } catch (error) {
+        console.error('Influencer stats error:', error);
+        res.status(500).json({ message: 'Error fetching performance data.' });
+    }
+});
+
 // --- Admin Google Login Endpoint ---
 app.post('/api/admin/google-login', async (req, res) => {
     try {

@@ -39,6 +39,10 @@
       "dest": "/admin/index.html"
     },
     {
+      "src": "/influencer",
+      "dest": "/public/influencer.html"
+    },
+    {
       "src": "/images/(.*)",
       "dest": "/public/images/$1"
     },
