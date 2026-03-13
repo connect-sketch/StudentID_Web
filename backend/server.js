@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const path = require('path');
 const { OAuth2Client } = require('google-auth-library');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const port = 3000;
@@ -19,6 +20,16 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-default-secret-for-dev'; // U
 const ALLOWED_ADMIN_EMAILS = ['connect@thestudentid.com']; // ADD YOUR GOOGLE EMAIL HERE
 
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
+
+// --- Nodemailer Transporter Configuration ---
+// Note: Use environment variables for sensitive info in production
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.GMAIL_USER, // e.g., 'your-email@gmail.com'
+        pass: process.env.GMAIL_PASS  // e.g., 'your-app-password'
+    }
+});
 
 // --- MongoDB Connection ---
 const mongoURI = process.env.MONGO_URI;
