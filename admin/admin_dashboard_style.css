@@ -150,6 +150,27 @@
     border-bottom: 1px solid var(--border-color);
 }
 
+.header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.table-filter {
+    padding: 8px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    width: 250px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.table-filter:focus {
+    border-color: #a3e635;
+    box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.1);
+}
+
 .download-csv-btn {
     background-color: #28a745;
     color: white;

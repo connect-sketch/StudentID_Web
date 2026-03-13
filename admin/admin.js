@@ -290,4 +290,23 @@ document.addEventListener('DOMContentLoaded', () => {
             downloadAsCSV(targetTable);
         }
     });
+
+    // --- Table Filtering Logic ---
+    document.addEventListener('input', (e) => {
+        if (e.target.matches('.table-filter')) {
+            const searchTerm = e.target.value.toLowerCase();
+            const targetId = e.target.dataset.target;
+            const section = document.getElementById(targetId);
+            const rows = section.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    });
 });
